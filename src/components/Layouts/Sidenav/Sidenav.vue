@@ -6,22 +6,42 @@
       </div>
       <hr />
       <ul>
-        <li v-for="item in [1, 2, 3]">
-          <SidenavItem />
+        <li v-for="item in items">
+          <SidenavItem :icon="item.icon" />
         </li>
       </ul>
     </div>
   </div>
 </template>
 
+<!------------ SCRIPT ------------>
 <script setup>
 import { ref } from 'vue';
 import SidenavItem from './SidenavItem.vue';
+
+const items = [
+  {
+    icon: 'fa-solid fa-gear',
+    name: 'Layout and styles',
+  },
+  {
+    icon: 'fa-solid fa-meteor',
+    name: 'Animations',
+  },
+  {
+    icon: 'fa-solid fa-hammer',
+    name: 'Exercises and practices',
+  },
+];
 </script>
+
+<!------------ STYLES ------------>
 
 <style scoped lang="scss">
 .sidebar_container {
-  $padding: 5px;
+  position: sticky;
+  top: 0;
+  $padding: 6px;
   padding: $padding $padding;
   height: calc(100vh - 2 * $padding);
   display: inline-block;
@@ -30,9 +50,9 @@ import SidenavItem from './SidenavItem.vue';
   width: 75px;
   overflow: hidden;
   height: 100%;
-  background-color: var(--main-color);
+  background-color: var(--nav-color);
 
-  border-radius: 4px;
+  border-radius: 5px;
 
   .top-item {
     padding-top: 30px;

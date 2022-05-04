@@ -1,22 +1,57 @@
 <template>
-  <div class="item">
-    <i class="fa-solid fa-0"></i>
+  <div class="item-container flex-centered">
+    <div class="item flex-centered">
+      <i :class="`icon ${icon}`" />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+
+const props = defineProps({
+  icon: String,
+  name: String,
+});
 </script>
 
 <style scoped lang="scss">
-.item {
-  cursor: pointer;
+$box-separation: 5px;
+
+.flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-container {
   width: 100%;
-  text-align: center;
-  height: 50px;
+
+  margin-top: $box-separation;
+
+  cursor: pointer;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+
+  margin: $box-separation;
+
+  border-radius: 50%;
+  background-color: var(--bg-contrast-100);
 
   &:hover {
-    background-color: dodgerblue;
+    border-radius: 10px;
+    background-color: var(--primary);
+    transition: all ease 0.2s;
+  }
+
+  .icon {
+    font-size: 30px;
   }
 }
 </style>

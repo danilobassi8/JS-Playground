@@ -1,6 +1,9 @@
 <template>
-  <div style="background-color: red; width: 100vw; height: 100vh;">
+  <div class="main-container">
     <Sidenav />
+    <div class="content">
+      <h1>asaaaaaaaaaaaaaad</h1>
+    </div>
   </div>
 </template>
 
@@ -9,4 +12,12 @@ import { ref } from 'vue';
 import Sidenav from './Sidenav/Sidenav.vue';
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.main-container {
+  display: flex;
+  background: var(--bg-main);
+}
+
+.content {
+}
+</style>

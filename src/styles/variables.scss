@@ -1,9 +1,19 @@
 // :root {
 .theme-main-dark {
-  --main-color: #12101c;
+  --bg-main: #292840;
+  --bg-contrast-100: #252333;
+  --bg-contrast-200: #333043;
+  --bg-contrast-300: #3a3749;
+  --bg-contrast-400: #444157;
+  --bg-contrast-500: #47435d;
+
+  --nav-color: #12101c;
+
+  --primary: #307ae0;
+  --primary-light: #57acdc;
 }
 
 .theme-main-light {
-  --main-color: #000;
+  --main-bg: #000;
 }
 // }
