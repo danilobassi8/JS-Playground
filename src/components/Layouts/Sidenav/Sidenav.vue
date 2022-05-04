@@ -7,7 +7,7 @@
       <hr />
       <ul>
         <li v-for="item in items">
-          <SidenavItem :icon="item.icon" />
+          <SidenavItem :icon="item.icon" :redirect="item.redirect" />
         </li>
       </ul>
     </div>
@@ -23,14 +23,17 @@ const items = [
   {
     icon: 'fa-solid fa-gear',
     name: 'Layout and styles',
+    redirect: 'settings',
   },
   {
     icon: 'fa-solid fa-meteor',
     name: 'Animations',
+    redirect: 'animations',
   },
   {
     icon: 'fa-solid fa-hammer',
     name: 'Exercises and practices',
+    redirect: 'practices',
   },
 ];
 </script>

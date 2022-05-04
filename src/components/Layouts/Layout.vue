@@ -2,7 +2,8 @@
   <div class="main-container">
     <Sidenav />
     <div class="content">
-      <h1>asaaaaaaaaaaaaaad</h1>
+      <!-- Router content-->
+      <router-view />
     </div>
   </div>
 </template>

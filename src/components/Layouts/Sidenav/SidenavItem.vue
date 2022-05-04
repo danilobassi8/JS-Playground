@@ -1,6 +1,6 @@
 <template>
   <div class="item-container flex-centered">
-    <div class="item flex-centered">
+    <div class="item flex-centered" @click="$router.push(redirect)">
       <i :class="`icon ${icon}`" />
     </div>
   </div>
@@ -12,6 +12,7 @@ import { ref } from 'vue';
 const props = defineProps({
   icon: String,
   name: String,
+  redirect: String,
 });
 </script>
 
@@ -26,13 +27,11 @@ $box-separation: 5px;
 
 .item-container {
   width: 100%;
-
   margin-top: $box-separation;
-
-  cursor: pointer;
 }
 
 .item {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,6 +51,7 @@ $box-separation: 5px;
 
   .icon {
     font-size: 30px;
+    color: var(--nav-icons);
   }
 }
 </style>
