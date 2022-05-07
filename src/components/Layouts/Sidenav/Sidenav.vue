@@ -1,13 +1,21 @@
 <template>
   <div class="sidebar_container">
-    <div class="sidebar">
-      <div class="item top-item">
-        <i class="fa-brands fa-js-square"></i>
-      </div>
+    <div class="sidebar" :style="sidebarStyle">
+      <SidenavItem
+        icon="fa-solid fa-bars"
+        @click="toggleMenu"
+        :fullShow="openedMenu"
+        special="burger"
+      />
       <hr />
       <ul>
         <li v-for="item in items">
-          <SidenavItem :icon="item.icon" :redirect="item.redirect" />
+          <SidenavItem
+            :icon="item.icon"
+            :redirect="item.redirect"
+            :fullShow="openedMenu"
+            :name="item.name"
+          />
         </li>
       </ul>
     </div>
@@ -16,13 +24,13 @@
 
 <!------------ SCRIPT ------------>
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import SidenavItem from './SidenavItem.vue';
 
 const items = [
   {
     icon: 'fa-solid fa-gear',
-    name: 'Layout and styles',
+    name: 'Settings',
     redirect: 'settings',
   },
   {
@@ -32,10 +40,21 @@ const items = [
   },
   {
     icon: 'fa-solid fa-hammer',
-    name: 'Exercises and practices',
-    redirect: 'practices',
+    name: 'Exercises',
+    redirect: 'Practices',
   },
 ];
+
+const openedMenu = ref(false);
+const toggleMenu = () => (openedMenu.value = !openedMenu.value);
+
+const sidebarStyle = computed(() => {
+  const opened = {
+    width: '200px',
+  };
+  const closed = {};
+  return openedMenu.value ? opened : closed;
+});
 </script>
 
 <!------------ STYLES ------------>
@@ -50,6 +69,7 @@ const items = [
   display: inline-block;
 }
 .sidebar {
+  transition: all ease 0.2s;
   width: 75px;
   overflow: hidden;
   height: 100%;

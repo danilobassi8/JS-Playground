@@ -17,7 +17,21 @@
 }
 
 .theme-main-light {
-  --main-bg: #000;
+  // change. just testing
+  --bg-main: #ffffff;
+
+  --bg-contrast-100: #d0d2cd;
+  --bg-contrast-200: #f2f7ed;
+  --bg-contrast-300: #415748;
+  --bg-contrast-400: #0f5d59;
+
+  --nav-color: dodgerblue;
+  --nav-icons: rgb(0, 0, 0);
+
+  --primary: #ff7d03;
+  --primary-light: #57acdc;
+
+  --color: rgb(6, 6, 6);
 }
 
 .themed {
