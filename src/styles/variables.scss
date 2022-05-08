@@ -1,11 +1,9 @@
-// :root {
+// ---- DEFAULT THEME ---- //
 .theme-main-dark {
   --bg-main: #36325d;
 
   --bg-contrast-100: #2f3039;
   --bg-contrast-200: #3a4c59;
-  --bg-contrast-300: #444157;
-  --bg-contrast-400: #47435d;
 
   --nav-color: #12101c;
   --nav-icons: white;
@@ -16,25 +14,33 @@
   --color: white;
 }
 
+// ---- DEFAULT LIGHT ---- //
 .theme-main-light {
   // change. just testing
-  --bg-main: #ffffff;
+  --bg-main: #fafafa;
 
-  --bg-contrast-100: #d0d2cd;
-  --bg-contrast-200: #f2f7ed;
-  --bg-contrast-300: #415748;
-  --bg-contrast-400: #0f5d59;
+  --bg-contrast-100: #e2e0e2;
+  --bg-contrast-200: #99999c;
 
-  --nav-color: dodgerblue;
-  --nav-icons: rgb(0, 0, 0);
+  --nav-color: #040d20;
+  --nav-icons: black;
 
-  --primary: #ff7d03;
+  --primary: #307ae0;
   --primary-light: #57acdc;
 
-  --color: rgb(6, 6, 6);
+  --color: black;
 }
 
 .themed {
-  color: var(--color);
+  span,
+  text,
+  h1,
+  h2,
+  h3,
+  h4,
+  h4,
+  h6,
+  div {
+    color: var(--color);
+  }
 }
-// }

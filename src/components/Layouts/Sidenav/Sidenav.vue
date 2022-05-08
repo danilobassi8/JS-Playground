@@ -1,23 +1,31 @@
 <template>
-  <div class="sidebar_container">
+  <div class="sidebar_container" :style="containerStyles">
     <div class="sidebar" :style="sidebarStyle">
+      <!-- LOGO -->
+
+      <div
+        class="item-container"
+        @click="toggleMenu()"
+        :style="{
+          display: vertical ? 'block' : 'inline-block',
+          width: vertical ? '100%' : '50px',
+          height: '50px',
+          background: 'blue',
+          marginBottom: '20px'
+        }"
+      >
+        <div class="item flex-centered">
+          <i :class="`icon fa-solid fa-bars`" />
+        </div>
+      </div>
+
       <SidenavItem
-        icon="fa-solid fa-bars"
-        @click="toggleMenu"
+        v-for="item in items"
+        :icon="item.icon"
+        :redirect="item.redirect"
         :fullShow="openedMenu"
-        special="burger"
+        :name="item.name"
       />
-      <hr />
-      <ul>
-        <li v-for="item in items">
-          <SidenavItem
-            :icon="item.icon"
-            :redirect="item.redirect"
-            :fullShow="openedMenu"
-            :name="item.name"
-          />
-        </li>
-      </ul>
     </div>
   </div>
 </template>
@@ -26,6 +34,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import SidenavItem from './SidenavItem.vue';
+import { useSettingsStore } from '../../../stores/SettingsStore';
 
 const items = [
   {
@@ -45,15 +54,35 @@ const items = [
   },
 ];
 
+const settingsStore = useSettingsStore();
 const openedMenu = ref(false);
 const toggleMenu = () => (openedMenu.value = !openedMenu.value);
+const vertical = computed(() => settingsStore.layout == 'left' || settingsStore.layout == 'right');
 
 const sidebarStyle = computed(() => {
-  const opened = {
-    width: '200px',
-  };
-  const closed = {};
-  return openedMenu.value ? opened : closed;
+  const style = {};
+  const vertical = settingsStore.layout == 'left' || settingsStore.layout == 'right';
+
+  console.log('que onda el vertical', vertical);
+  // check if opened
+  if (openedMenu.value) {
+    style[vertical ? 'width' : 'height'] = '200px';
+  }
+
+  if (!vertical) {
+    style.width = '100%';
+  }
+
+  return style;
+});
+
+const containerStyles = computed(() => {
+  const style = {};
+  if (settingsStore.layout === 'top' || settingsStore === 'bot') {
+    style.height = '75px';
+  }
+
+  return style;
 });
 </script>
 
@@ -76,12 +105,5 @@ const sidebarStyle = computed(() => {
   background-color: var(--nav-color);
 
   border-radius: 5px;
-
-  .top-item {
-    padding-top: 30px;
-  }
-}
-* {
-  color: white;
 }
 </style>
